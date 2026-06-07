@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fluxio — Gestão para pequenos negócios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#111111;
+  --white:#ffffff;
+  --gray-100:#f5f5f4;
+  --gray-200:#e5e5e5;
+  --gray-500:#737373;
+  --green:#16a34a;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--gray-200)}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo svg{width:36px;height:36px}
+.nav-logo span{font-size:20px;font-weight:500;letter-spacing:-0.5px}
+.nav-cta{background:var(--black);color:var(--white);border:none;padding:10px 24px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.8}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px 24px 80px;text-align:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.hero-bg svg{width:600px;height:600px;opacity:0.03}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--gray-100);border:0.5px solid var(--gray-200);padding:6px 16px;border-radius:100px;font-size:13px;color:var(--gray-500);margin-bottom:32px}
+.hero-badge span{width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block}
+h1{font-family:'DM Serif Display',serif;font-size:clamp(40px,7vw,80px);font-weight:400;line-height:1.1;letter-spacing:-1px;max-width:800px;margin-bottom:24px}
+h1 em{font-style:italic;color:var(--gray-500)}
+.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--gray-500);max-width:520px;line-height:1.6;margin-bottom:48px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.btn-primary{background:var(--black);color:var(--white);border:none;padding:16px 36px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;transition:transform 0.2s,opacity 0.2s}
+.btn-primary:hover{transform:translateY(-1px);opacity:0.85}
+.btn-secondary{background:transparent;color:var(--black);border:0.5px solid var(--gray-200);padding:16px 36px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;cursor:pointer;text-decoration:none;transition:background 0.2s}
+.btn-secondary:hover{background:var(--gray-100)}
+.hero-note{margin-top:20px;font-size:13px;color:var(--gray-500)}
+
+/* LOGOS / SOCIAL PROOF */
+.proof{padding:60px 24px;text-align:center;border-top:0.5px solid var(--gray-200);border-bottom:0.5px solid var(--gray-200)}
+.proof p{font-size:13px;color:var(--gray-500);letter-spacing:2px;text-transform:uppercase;margin-bottom:32px}
+.proof-items{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;align-items:center}
+.proof-item{font-size:15px;font-weight:500;color:var(--gray-500)}
+
+/* FEATURES */
+.features{padding:100px 24px;max-width:1100px;margin:0 auto}
+.section-label{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gray-500);margin-bottom:16px}
+.section-title{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,52px);font-weight:400;line-height:1.2;max-width:600px;margin-bottom:64px}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;background:var(--gray-200);border:0.5px solid var(--gray-200);border-radius:16px;overflow:hidden}
+.feature-card{background:var(--white);padding:40px;transition:background 0.2s}
+.feature-card:hover{background:var(--gray-100)}
+.feature-icon{width:40px;height:40px;background:var(--black);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.feature-icon svg{width:20px;height:20px;stroke:white;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.feature-card h3{font-size:17px;font-weight:500;margin-bottom:10px;letter-spacing:-0.3px}
+.feature-card p{font-size:14px;color:var(--gray-500);line-height:1.6}
+
+/* COMO FUNCIONA */
+.how{padding:100px 24px;background:var(--gray-100)}
+.how-inner{max-width:900px;margin:0 auto}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px;margin-top:64px}
+.step{display:flex;flex-direction:column;gap:16px}
+.step-num{font-family:'DM Serif Display',serif;font-size:48px;color:var(--gray-200);line-height:1}
+.step h3{font-size:17px;font-weight:500}
+.step p{font-size:14px;color:var(--gray-500);line-height:1.6}
+
+/* MOBILE */
+.mobile-section{padding:100px 24px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.mobile-text .tag{display:inline-block;background:var(--black);color:var(--white);font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:24px}
+.mobile-text h2{font-family:'DM Serif Display',serif;font-size:clamp(28px,3vw,44px);font-weight:400;line-height:1.2;margin-bottom:20px}
+.mobile-text p{font-size:15px;color:var(--gray-500);line-height:1.7;margin-bottom:32px}
+.mobile-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.mobile-list li{display:flex;align-items:center;gap:12px;font-size:14px}
+.mobile-list li::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;flex-shrink:0}
+.phone-mock{background:var(--black);border-radius:40px;padding:32px 24px;aspect-ratio:9/18;max-width:260px;margin:0 auto;position:relative;box-shadow:0 40px 80px rgba(0,0,0,0.15)}
+.phone-notch{width:80px;height:6px;background:#333;border-radius:10px;margin:0 auto 24px}
+.phone-screen{background:#1a1a1a;border-radius:16px;padding:20px;height:calc(100% - 30px)}
+.phone-kpi{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.phone-card{background:#222;border-radius:10px;padding:12px}
+.phone-card-label{font-size:9px;color:#666;margin-bottom:4px}
+.phone-card-value{font-size:18px;font-weight:500;color:white}
+.phone-list-item{background:#222;border-radius:8px;padding:10px;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.phone-dot{width:6px;height:6px;background:var(--green);border-radius:50%;flex-shrink:0}
+.phone-text{font-size:9px;color:#aaa}
+
+/* CTA */
+.cta-section{padding:100px 24px;text-align:center;background:var(--black);color:var(--white)}
+.cta-section h2{font-family:'DM Serif Display',serif;font-size:clamp(32px,5vw,60px);font-weight:400;line-height:1.2;margin-bottom:20px;max-width:700px;margin-left:auto;margin-right:auto}
+.cta-section p{font-size:16px;color:#888;margin-bottom:40px}
+.btn-white{background:var(--white);color:var(--black);border:none;padding:16px 40px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-block;transition:opacity 0.2s}
+.btn-white:hover{opacity:0.9}
+.cta-note{margin-top:20px;font-size:13px;color:#555}
+
+/* FOOTER */
+footer{padding:40px 24px;border-top:0.5px solid var(--gray-200);display:flex;align-items:center;justify-content:space-between;flex-wrap:gap;gap:16px}
+.footer-logo{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:500;letter-spacing:-0.3px}
+.footer-logo svg{width:28px;height:28px}
+footer p{font-size:13px;color:var(--gray-500)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:16px 20px}
+  .mobile-section{grid-template-columns:1fr;gap:40px}
+  .phone-mock{max-width:200px}
+  footer{flex-direction:column;text-align:center}
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-badge{animation:fadeUp 0.6s ease both}
+h1{animation:fadeUp 0.6s 0.1s ease both}
+.hero-sub{animation:fadeUp 0.6s 0.2s ease both}
+.hero-actions{animation:fadeUp 0.6s 0.3s ease both}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="72" height="72" rx="18" fill="#111111"/>
+      <path d="M16 52 C16 52 24 36 36 36 C48 36 48 20 56 20" stroke="white" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="56" cy="20" r="5" fill="white"/>
+      <circle cx="16" cy="52" r="5" fill="white"/>
+    </svg>
+    <span>fluxio</span>
+  </div>
+  <a href="#contato" class="nav-cta">Falar com a gente</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="72" height="72" rx="18" fill="#111111"/>
+      <path d="M16 52 C16 52 24 36 36 36 C48 36 48 20 56 20" stroke="white" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="56" cy="20" r="5" fill="white"/>
+      <circle cx="16" cy="52" r="5" fill="white"/>
+    </svg>
+  </div>
+  <div class="hero-badge"><span></span> Sistema de gestão para pequenos negócios</div>
+  <h1>Gerencie seu negócio.<br/><em>Sem complicação.</em></h1>
+  <p class="hero-sub">Agenda, clientes, financeiro e relatórios num sistema que funciona no celular e no computador — feito para quem não tem tempo a perder.</p>
+  <div class="hero-actions">
+    <a href="#contato" class="btn-primary">Quero conhecer</a>
+    <a href="#como-funciona" class="btn-secondary">Ver como funciona</a>
+  </div>
+  <p class="hero-note">Sem taxa de implantação nos primeiros meses · Suporte próximo e personalizado</p>
+</section>
+
+<!-- SOCIAL PROOF -->
+<div class="proof">
+  <p>Funciona para</p>
+  <div class="proof-items">
+    <span class="proof-item">Salões de beleza</span>
+    <span class="proof-item">Barbearias</span>
+    <span class="proof-item">Academias</span>
+    <span class="proof-item">Clínicas</span>
+    <span class="proof-item">Estúdios</span>
+    <span class="proof-item">E muito mais</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features">
+  <p class="section-label">Funcionalidades</p>
+  <h2 class="section-title">Tudo que seu negócio precisa, num só lugar.</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <h3>Agenda inteligente</h3>
+      <p>Controle seus agendamentos com visão diária, semanal e por profissional. Nunca mais confunda horários.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>Cadastro de clientes</h3>
+      <p>Histórico completo de cada cliente — atendimentos, pagamentos e observações em um único perfil.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <h3>Controle financeiro</h3>
+      <p>Cobranças, pagamentos e inadimplência sob controle. Sabe exatamente o que entrou e o que está pendente.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3>Relatórios e métricas</h3>
+      <p>Veja o desempenho do seu negócio em tempo real. Tome decisões com base em dados, não em achismos.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      </div>
+      <h3>100% no celular</h3>
+      <p>Acesse pelo celular, tablet ou computador. Sem app para instalar — abre direto no navegador.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Seus dados, seguros</h3>
+      <p>Cada negócio tem seu ambiente isolado. Os seus dados não se misturam com os de ninguém.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="how" id="como-funciona">
+  <div class="how-inner">
+    <p class="section-label">Como funciona</p>
+    <h2 class="section-title">Em poucos dias, seu negócio já está rodando no Fluxio.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Você entra em contato</h3>
+        <p>Conversamos sobre o seu negócio, suas necessidades e como o Fluxio pode ajudar.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Configuramos tudo para você</h3>
+        <p>Cadastramos seus serviços, equipe e configurações. Você não precisa fazer nada técnico.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Começa a usar</h3>
+        <p>Acesse pelo celular ou computador e tenha controle total do seu negócio desde o primeiro dia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOBILE FIRST -->
+<section class="mobile-section">
+  <div class="mobile-text">
+    <span class="tag">Mobile first</span>
+    <h2>Feito para quem trabalha em movimento.</h2>
+    <p>Seu negócio não para — o Fluxio também não. Acesse pelo celular em qualquer lugar, sem instalar nada.</p>
+    <ul class="mobile-list">
+      <li>Agenda do dia na palma da mão</li>
+      <li>Cadastre clientes na hora do atendimento</li>
+      <li>Registre pagamentos em segundos</li>
+      <li>Veja seus números quando quiser</li>
+    </ul>
+  </div>
+  <div>
+    <div class="phone-mock">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-kpi">
+          <div class="phone-card">
+            <div class="phone-card-label">Hoje</div>
+            <div class="phone-card-value">8</div>
+          </div>
+          <div class="phone-card">
+            <div class="phone-card-label">Clientes</div>
+            <div class="phone-card-value">124</div>
+          </div>
+        </div>
+        <div class="phone-list-item"><div class="phone-dot"></div><div class="phone-text">09:00 — João Silva</div></div>
+        <div class="phone-list-item"><div class="phone-dot"></div><div class="phone-text">10:30 — Maria Santos</div></div>
+        <div class="phone-list-item"><div class="phone-dot"></div><div class="phone-text">11:00 — Pedro Costa</div></div>
+        <div class="phone-list-item"><div class="phone-dot"></div><div class="phone-text">14:00 — Ana Oliveira</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contato">
+  <h2>Pronto para organizar seu negócio?</h2>
+  <p>Entre em contato e veja como o Fluxio funciona na prática, sem compromisso.</p>
+  <a href="https://wa.me/5514999999999?text=Olá! Quero conhecer o Fluxio." class="btn-white" target="_blank">Falar no WhatsApp</a>
+  <p class="cta-note">Respondemos em até algumas horas · Sem spam, prometemos</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="72" height="72" rx="18" fill="#111111"/>
+      <path d="M16 52 C16 52 24 36 36 36 C48 36 48 20 56 20" stroke="white" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="56" cy="20" r="5" fill="white"/>
+      <circle cx="16" cy="52" r="5" fill="white"/>
+    </svg>
+    fluxio
+  </div>
+  <p>© 2025 Fluxio · fluxioapp.com.br</p>
+</footer>
+
+</body>
+</html>
