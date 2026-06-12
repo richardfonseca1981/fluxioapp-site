@@ -1,0 +1,7 @@
+cd C:\Users\richa\projetos\fluxioapp-site
+@"
+{
+  "cleanUrls": true,
+  "trailingSlash": false
+}
+"@ | Out-File -FilePath vercel.json -Encoding utf8
