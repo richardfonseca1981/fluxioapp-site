@@ -5,128 +5,135 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Copa do Mundo 2026 — Placares</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --black:#111111;
   --white:#ffffff;
-  --gray-50:#fafafa;
-  --gray-100:#f5f5f4;
-  --gray-200:#e5e5e5;
-  --gray-400:#a3a3a3;
-  --gray-500:#737373;
-  --green:#16a34a;
-  --green-light:#dcfce7;
+  --gray-50:#f9fafb;
+  --gray-100:#f3f4f6;
+  --gray-200:#e5e7eb;
+  --gray-400:#9ca3af;
+  --gray-500:#6b7280;
+  --green:#059669;
+  --green-bg:#ecfdf5;
   --red:#dc2626;
-  --red-light:#fee2e2;
+  --red-bg:#fef2f2;
   --amber:#d97706;
-  --amber-light:#fef3c7;
+  --amber-bg:#fffbeb;
   --blue:#2563eb;
-  --blue-light:#dbeafe;
-  --purple:#7c3aed;
-  --purple-light:#ede9fe;
+  --blue-bg:#eff6ff;
+  --indigo:#4f46e5;
 }
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:#fafafa;color:var(--black);min-height:100vh}
+body{font-family:'DM Sans',sans-serif;background:var(--gray-50);color:var(--black);min-height:100vh}
 
 /* NAV */
-nav{padding:14px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid var(--gray-200);position:sticky;top:0;background:rgba(250,250,250,0.95);backdrop-filter:blur(8px);z-index:100}
+nav{padding:14px 20px;display:flex;align-items:center;justify-content:space-between;background:var(--white);border-bottom:1px solid var(--gray-200);position:sticky;top:0;z-index:100}
 .nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--black)}
-.nav-logo svg{width:26px;height:26px}
-.nav-logo span{font-size:15px;font-weight:500;letter-spacing:-0.3px}
-.nav-right{display:flex;align-items:center;gap:10px}
-.nav-tag{font-size:11px;background:#fff7ed;color:#c2410c;border:0.5px solid #fed7aa;padding:3px 10px;border-radius:100px;font-weight:500}
+.nav-logo svg{width:28px;height:28px}
+.nav-logo span{font-size:16px;font-weight:600;letter-spacing:-0.3px}
+.nav-copa{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#b45309;background:#fef3c7;border:1px solid #fde68a;padding:4px 12px;border-radius:100px}
 
 /* HERO */
-.hero{padding:40px 24px 28px;max-width:700px;margin:0 auto;position:relative}
-.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.hero-text h1{font-family:'DM Serif Display',serif;font-size:clamp(26px,5vw,40px);font-weight:400;letter-spacing:-0.5px;line-height:1.15;margin-bottom:6px}
-.hero-text p{font-size:14px;color:var(--gray-500);line-height:1.5}
-.hero-trophy{font-size:56px;line-height:1;flex-shrink:0}
-.live-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--red);margin-top:12px;background:var(--red-light);padding:4px 12px;border-radius:100px;font-weight:500}
-.live-dot{width:6px;height:6px;background:var(--red);border-radius:50%;animation:pulse 1.2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
+.hero{background:linear-gradient(135deg,#1e3a5f 0%,#1a2f4a 50%,#0f2035 100%);padding:36px 20px 32px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-content{position:relative;z-index:1}
+.hero-trophy{font-size:48px;margin-bottom:12px}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(24px,5vw,40px);color:var(--white);font-weight:400;line-height:1.15;margin-bottom:6px}
+.hero h1 span{color:#fbbf24}
+.hero p{font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:16px}
+.live-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(239,68,68,0.2);border:1px solid rgba(239,68,68,0.4);color:#fca5a5;padding:5px 14px;border-radius:100px;font-size:12px;font-weight:600}
+.live-dot{width:6px;height:6px;background:#ef4444;border-radius:50%;animation:pulse 1.2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(0.7)}}
 
-/* STATS BAR */
-.stats-bar{max-width:700px;margin:0 auto;padding:0 24px 24px;display:flex;gap:12px;overflow-x:auto;scrollbar-width:none}
-.stats-bar::-webkit-scrollbar{display:none}
-.stat-chip{background:var(--white);border:0.5px solid var(--gray-200);border-radius:10px;padding:10px 16px;flex-shrink:0;text-align:center}
-.stat-chip-value{font-size:20px;font-weight:600;letter-spacing:-0.5px;line-height:1}
-.stat-chip-label{font-size:11px;color:var(--gray-500);margin-top:2px}
+/* STATS */
+.stats{display:flex;gap:1px;background:var(--gray-200);overflow:hidden}
+.stat{flex:1;background:var(--white);padding:14px 8px;text-align:center}
+.stat-val{font-size:22px;font-weight:700;letter-spacing:-0.5px;line-height:1}
+.stat-lbl{font-size:11px;color:var(--gray-500);margin-top:2px}
+.stat-val.live-val{color:var(--red)}
 
 /* FILTROS */
-.filters{padding:0 24px 20px;max-width:700px;margin:0 auto;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.filters{background:var(--white);border-bottom:1px solid var(--gray-200);padding:12px 16px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
 .filters::-webkit-scrollbar{display:none}
-.filter-btn{padding:7px 18px;border-radius:100px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:all 0.15s;border:0.5px solid var(--gray-200);background:var(--white);color:var(--gray-500);font-weight:400}
-.filter-btn:hover{border-color:var(--gray-400);color:var(--black)}
+.filter-btn{padding:6px 16px;border-radius:100px;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;border:1.5px solid var(--gray-200);background:var(--white);color:var(--gray-500);transition:all 0.15s}
 .filter-btn.active{background:var(--black);color:var(--white);border-color:var(--black)}
+.filter-btn:hover:not(.active){border-color:var(--gray-400);color:var(--black)}
 
 /* JOGOS */
-.games{padding:0 24px 60px;max-width:700px;margin:0 auto}
-.day-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-400);margin:28px 0 14px;display:flex;align-items:center;gap:10px}
-.day-label::after{content:'';flex:1;height:0.5px;background:var(--gray-200)}
-.day-label.today-label{color:var(--blue);font-weight:600}
+.games{padding:16px;max-width:700px;margin:0 auto}
+.day-header{display:flex;align-items:center;gap:10px;margin:20px 0 12px}
+.day-header:first-child{margin-top:4px}
+.day-badge{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:100px}
+.day-badge.today{background:#dbeafe;color:#1d4ed8}
+.day-badge.past{background:var(--gray-100);color:var(--gray-500)}
+.day-badge.future{background:#f0fdf4;color:#15803d}
+.day-line{flex:1;height:1px;background:var(--gray-200)}
 
-.game{background:var(--white);border:0.5px solid var(--gray-200);border-radius:14px;padding:18px 20px;margin-bottom:10px;transition:border-color 0.15s,box-shadow 0.15s}
-.game:hover{border-color:var(--gray-400);box-shadow:0 2px 8px rgba(0,0,0,0.04)}
-.game.live{border-color:#fca5a5;background:#fffafa}
-.game.finished{opacity:0.75}
+.game{background:var(--white);border-radius:16px;margin-bottom:10px;overflow:hidden;border:1px solid var(--gray-200);transition:box-shadow 0.2s}
+.game:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08)}
+.game.live-game{border-color:#fca5a5;border-width:1.5px}
+.game.brasil-game{border-color:#86efac;border-width:1.5px}
 
-.game-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.game-group{font-size:11px;color:var(--gray-400);letter-spacing:0.5px}
-.status-badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px}
-.badge-live{background:var(--red-light);color:var(--red)}
-.badge-halftime{background:var(--amber-light);color:var(--amber)}
-.badge-finished{background:var(--gray-100);color:var(--gray-500)}
-.badge-scheduled{background:var(--blue-light);color:var(--blue)}
+.game-top{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 0}
+.game-stage-badge{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gray-400)}
+.game-status-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px}
+.sb-live{background:var(--red-bg);color:var(--red)}
+.sb-halftime{background:var(--amber-bg);color:var(--amber)}
+.sb-finished{background:var(--gray-100);color:var(--gray-500)}
+.sb-scheduled{background:var(--blue-bg);color:var(--blue)}
 
-.game-body{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px}
-.team{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
-.team-flag{font-size:32px;line-height:1}
-.team-name{font-size:13px;font-weight:500;line-height:1.3;color:var(--black)}
+.game-body{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;padding:14px}
 
-.score-center{text-align:center}
-.score{font-size:28px;font-weight:700;letter-spacing:-1px;font-variant-numeric:tabular-nums;line-height:1}
-.score-sep{color:var(--gray-300);margin:0 3px;font-weight:300}
-.score-time{font-size:12px;color:var(--gray-400);margin-top:4px}
-.score-scheduled{font-size:13px;color:var(--gray-500);font-weight:500}
+.team{display:flex;flex-direction:column;align-items:center;gap:8px}
+.team-flag-img{width:48px;height:32px;object-fit:contain;border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,0.15)}
+.team-flag-emoji{font-size:32px;line-height:1}
+.team-name{font-size:13px;font-weight:600;text-align:center;line-height:1.2}
+.team-name-short{font-size:11px;color:var(--gray-500);text-align:center}
 
-.game-footer{margin-top:10px;padding-top:10px;border-top:0.5px solid var(--gray-100);display:flex;justify-content:space-between;align-items:center}
-.game-venue{font-size:11px;color:var(--gray-400)}
-.game-stage{font-size:11px;color:var(--gray-400)}
+.score-center{text-align:center;min-width:80px}
+.score-nums{font-size:32px;font-weight:800;letter-spacing:-1px;line-height:1;font-variant-numeric:tabular-nums}
+.score-sep{color:var(--gray-300);margin:0 2px;font-weight:300}
+.score-time{font-size:11px;font-weight:600;color:var(--red);margin-top:4px}
+.score-vs{font-size:14px;font-weight:600;color:var(--gray-400)}
+.score-hour{font-size:16px;font-weight:700;color:var(--gray-500);margin-top:2px}
+.score-date{font-size:11px;color:var(--gray-400)}
 
-/* BRASIL HIGHLIGHT */
-.game.brasil{border-color:#86efac;background:linear-gradient(135deg,#f0fdf4,#ffffff)}
-.game.brasil .game-header::before{content:'🇧🇷';margin-right:6px;font-size:12px}
+.game-bottom{padding:0 14px 10px;display:flex;justify-content:center}
+.game-venue{font-size:11px;color:var(--gray-400);display:flex;align-items:center;gap:4px}
 
-/* LOADING / ERROR */
-.loading{padding:60px 0;text-align:center;color:var(--gray-400)}
-.spinner{width:24px;height:24px;border:2px solid var(--gray-200);border-top-color:var(--black);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 12px}
-@keyframes spin{to{transform:rotate(360deg)}}
-.error{padding:20px;background:var(--amber-light);border:0.5px solid #fde68a;border-radius:12px;font-size:13px;color:#92400e;text-align:center;line-height:1.6}
-.error a{color:#92400e;font-weight:500}
+/* BRASIL DESTAQUE */
+.brasil-header{background:linear-gradient(90deg,#009c3b,#002776);padding:2px 14px}
+.brasil-header-text{font-size:10px;font-weight:700;color:var(--white);letter-spacing:1px;text-transform:uppercase;opacity:0.9}
+
+/* EMPTY */
+.empty{text-align:center;padding:48px 20px;color:var(--gray-400)}
+.empty-icon{font-size:40px;margin-bottom:12px}
 
 /* LAST UPDATED */
-.last-updated{text-align:center;font-size:11px;color:var(--gray-400);padding:8px 0 0}
+.last-updated{text-align:center;font-size:11px;color:var(--gray-400);padding:8px 16px 4px}
 
 /* FOOTER */
-footer{border-top:0.5px solid var(--gray-200);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:var(--white)}
-.footer-fluxio{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--gray-500);font-size:12px;transition:color 0.2s}
-.footer-fluxio:hover{color:var(--black)}
-.footer-fluxio svg{width:18px;height:18px}
+footer{background:var(--white);border-top:1px solid var(--gray-200);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:8px}
+.footer-link{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--gray-500);font-size:12px;transition:color 0.2s}
+.footer-link:hover{color:var(--black)}
+.footer-link svg{width:20px;height:20px}
 .footer-note{font-size:11px;color:var(--gray-400)}
 
-@media(max-width:500px){
-  .hero{padding:28px 16px 20px}
-  .stats-bar{padding:0 16px 20px}
-  .filters{padding:0 16px 16px}
-  .games{padding:0 16px 48px}
-  .hero-trophy{font-size:44px}
-  .team-flag{font-size:26px}
-  .score{font-size:24px}
-  .game{padding:14px 16px}
-  footer{padding:16px}
+/* LOADING */
+.loading{padding:60px 20px;text-align:center;color:var(--gray-400)}
+.spinner{width:28px;height:28px;border:2px solid var(--gray-200);border-top-color:var(--black);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-box{margin:16px;padding:16px;background:#fffbeb;border:1px solid #fde68a;border-radius:12px;font-size:13px;color:#92400e;text-align:center}
+
+@media(max-width:480px){
+  .games{padding:12px}
+  .team-flag-img{width:40px;height:26px}
+  .score-nums{font-size:26px}
+  .team-name{font-size:12px}
+  .game-body{gap:4px;padding:12px 10px}
 }
 </style>
 </head>
@@ -142,62 +149,43 @@ footer{border-top:0.5px solid var(--gray-200);padding:20px 24px;display:flex;ali
     </svg>
     <span>fluxio</span>
   </a>
-  <div class="nav-right">
-    <span class="nav-tag">⚽ Copa 2026</span>
-  </div>
+  <div class="nav-copa">⚽ Copa 2026</div>
 </nav>
 
 <div class="hero">
-  <div class="hero-top">
-    <div class="hero-text">
-      <h1>Copa do Mundo<br/>2026</h1>
-      <p>Placares e resultados em tempo real</p>
-      <div class="live-pill" id="livePill" style="display:none">
-        <span class="live-dot"></span> Jogos ao vivo agora
-      </div>
-    </div>
+  <div class="hero-content">
     <div class="hero-trophy">🏆</div>
+    <h1>Copa do Mundo <span>2026</span></h1>
+    <p>EUA · México · Canadá · 11 jun – 19 jul</p>
+    <div class="live-pill" id="livePill" style="display:none">
+      <span class="live-dot"></span> Jogos ao vivo
+    </div>
   </div>
 </div>
 
-<div class="stats-bar" id="statsBar" style="display:none">
-  <div class="stat-chip">
-    <div class="stat-chip-value" id="statTotal">—</div>
-    <div class="stat-chip-label">Jogos</div>
-  </div>
-  <div class="stat-chip">
-    <div class="stat-chip-value" id="statFinished">—</div>
-    <div class="stat-chip-label">Encerrados</div>
-  </div>
-  <div class="stat-chip">
-    <div class="stat-chip-value" id="statUpcoming">—</div>
-    <div class="stat-chip-label">Próximos</div>
-  </div>
-  <div class="stat-chip">
-    <div class="stat-chip-value" id="statLive" style="color:var(--red)">—</div>
-    <div class="stat-chip-label">Ao vivo</div>
-  </div>
+<div class="stats" id="statsBar">
+  <div class="stat"><div class="stat-val" id="statTotal">—</div><div class="stat-lbl">Jogos</div></div>
+  <div class="stat"><div class="stat-val" id="statFinished">—</div><div class="stat-lbl">Encerrados</div></div>
+  <div class="stat"><div class="stat-val" id="statUpcoming">—</div><div class="stat-lbl">Próximos</div></div>
+  <div class="stat"><div class="stat-val live-val" id="statLive">—</div><div class="stat-lbl">Ao vivo</div></div>
 </div>
 
 <div class="filters">
   <button class="filter-btn active" onclick="filterGames('all',this)">Todos</button>
   <button class="filter-btn" onclick="filterGames('live',this)">🔴 Ao vivo</button>
-  <button class="filter-btn" onclick="filterGames('today',this)">Hoje</button>
-  <button class="filter-btn" onclick="filterGames('upcoming',this)">Próximos</button>
-  <button class="filter-btn" onclick="filterGames('finished',this)">Encerrados</button>
+  <button class="filter-btn" onclick="filterGames('today',this)">📅 Hoje</button>
+  <button class="filter-btn" onclick="filterGames('upcoming',this)">⏭ Próximos</button>
+  <button class="filter-btn" onclick="filterGames('finished',this)">✓ Encerrados</button>
   <button class="filter-btn" onclick="filterGames('brasil',this)">🇧🇷 Brasil</button>
 </div>
 
 <div class="games" id="gamesContainer">
-  <div class="loading">
-    <div class="spinner"></div>
-    <p>Carregando placares...</p>
-  </div>
+  <div class="loading"><div class="spinner"></div><p>Carregando placares...</p></div>
 </div>
 <div class="last-updated" id="lastUpdated"></div>
 
 <footer>
-  <a href="https://fluxioapp.com.br" class="footer-fluxio">
+  <a href="https://fluxioapp.com.br" class="footer-link">
     <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="72" height="72" rx="18" fill="#111111"/>
       <path d="M16 52 C16 52 24 36 36 36 C48 36 48 20 56 20" stroke="white" stroke-width="5" stroke-linecap="round"/>
@@ -212,65 +200,69 @@ footer{border-top:0.5px solid var(--gray-200);padding:20px 24px;display:flex;ali
 <script>
 const WC_URL = 'https://fluxioapp-production.up.railway.app/api/v1/public/copa/matches';
 
-const FLAGS = {
-  'BRA':'🇧🇷','ARG':'🇦🇷','FRA':'🇫🇷','ESP':'🇪🇸','ENG':'🏴󠁧󠁢󠁥󠁮󠁧󠁿','GER':'🇩🇪',
-  'POR':'🇵🇹','NED':'🇳🇱','BEL':'🇧🇪','ITA':'🇮🇹','URU':'🇺🇾','MEX':'🇲🇽',
-  'USA':'🇺🇸','CAN':'🇨🇦','JPN':'🇯🇵','KOR':'🇰🇷','MAR':'🇲🇦','SEN':'🇸🇳',
-  'GHA':'🇬🇭','EGY':'🇪🇬','TUN':'🇹🇳','CIV':'🇨🇮','AUS':'🇦🇺','NZL':'🇳🇿',
-  'CRO':'🇭🇷','SRB':'🇷🇸','POL':'🇵🇱','SUI':'🇨🇭','DEN':'🇩🇰','SCO':'🏴󠁧󠁢󠁳󠁣󠁴󠁿',
-  'IRN':'🇮🇷','SAU':'🇸🇦','QAT':'🇶🇦','ECU':'🇪🇨','COL':'🇨🇴','PAR':'🇵🇾',
-  'HAI':'🇭🇹','UZB':'🇺🇿','CPV':'🇨🇻','ALG':'🇩🇿','AUT':'🇦🇹','JOR':'🇯🇴',
-  'NOR':'🇳🇴','UKR':'🇺🇦','SWE':'🇸🇪','ZAF':'🇿🇦','CUR':'🇨🇼','GEO':'🇬🇪',
-  'PAN':'🇵🇦','default':'🏳️'
+const STAGE_LABELS = {
+  'GROUP_STAGE':'Fase de Grupos',
+  'LAST_32':'Rodada de 32',
+  'LAST_16':'Oitavas de Final',
+  'QUARTER_FINALS':'Quartas de Final',
+  'SEMI_FINALS':'Semifinais',
+  'THIRD_PLACE':'Disputa 3º Lugar',
+  'FINAL':'🏆 Final'
 };
 
 let allMatches = [];
 let currentFilter = 'all';
 
-function getFlag(tla){ return FLAGS[tla] || FLAGS['default']; }
-
 function formatDateTime(dateStr){
   return new Date(dateStr).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
 }
-
 function formatHour(dateStr){
   return new Date(dateStr).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo',hour:'2-digit',minute:'2-digit'});
 }
-
 function formatDay(dateStr){
   const d = new Date(dateStr);
   const today = new Date();
   const tomorrow = new Date(); tomorrow.setDate(today.getDate()+1);
   const yesterday = new Date(); yesterday.setDate(today.getDate()-1);
-  if(d.toDateString()===today.toDateString()) return '__TODAY__';
-  if(d.toDateString()===tomorrow.toDateString()) return 'Amanhã';
-  if(d.toDateString()===yesterday.toDateString()) return 'Ontem';
-  return d.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long'});
+  if(d.toDateString()===today.toDateString()) return {label:'Hoje',type:'today'};
+  if(d.toDateString()===tomorrow.toDateString()) return {label:'Amanhã',type:'future'};
+  if(d.toDateString()===yesterday.toDateString()) return {label:'Ontem',type:'past'};
+  const isPast = d < today;
+  return {label:d.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'short'}).replace('.',','),type:isPast?'past':'future'};
 }
+function isBrasil(m){ return m.homeTeam?.tla==='BRA'||m.awayTeam?.tla==='BRA'; }
 
-function isBrasil(m){
-  return m.homeTeam?.tla==='BRA' || m.awayTeam?.tla==='BRA';
+function teamHtml(team){
+  const hasFlag = team.crest && team.name;
+  if(!hasFlag) return `<div class="team"><div class="team-flag-emoji">🏳️</div><div class="team-name">A definir</div></div>`;
+  return `<div class="team">
+    <img class="team-flag-img" src="${team.crest}" alt="${team.shortName||team.name}" onerror="this.style.display='none'"/>
+    <div class="team-name">${team.shortName||team.name}</div>
+  </div>`;
 }
 
 function renderMatches(matches){
   const container = document.getElementById('gamesContainer');
   if(!matches.length){
-    container.innerHTML = '<div style="text-align:center;padding:40px;color:var(--gray-400);font-size:14px">Nenhum jogo neste filtro.</div>';
+    container.innerHTML = `<div class="empty"><div class="empty-icon">🔍</div><p>Nenhum jogo neste filtro.</p></div>`;
     return;
   }
 
   const byDay = {};
   matches.forEach(m => {
     const day = formatDay(m.utcDate);
-    if(!byDay[day]) byDay[day] = [];
-    byDay[day].push(m);
+    const key = day.label+'||'+day.type;
+    if(!byDay[key]) byDay[key] = [];
+    byDay[key].push(m);
   });
 
   let html = '';
-  for(const [day, games] of Object.entries(byDay)){
-    const isToday = day === '__TODAY__';
-    const label = isToday ? 'Hoje' : day;
-    html += `<div class="day-label ${isToday?'today-label':''}">${label}</div>`;
+  for(const [key, games] of Object.entries(byDay)){
+    const [label,type] = key.split('||');
+    html += `<div class="day-header">
+      <span class="day-badge ${type}">${label}</span>
+      <div class="day-line"></div>
+    </div>`;
 
     games.forEach(m => {
       const home = m.homeTeam;
@@ -282,42 +274,41 @@ function renderMatches(matches){
       const isScheduled = ['TIMED','SCHEDULED'].includes(m.status);
       const brasil = isBrasil(m);
 
-      const hs = score?.fullTime?.home ?? ((isLive||isPaused) ? score?.halfTime?.home : null);
-      const as_ = score?.fullTime?.away ?? ((isLive||isPaused) ? score?.halfTime?.away : null);
-      const showScore = hs !== null && hs !== undefined;
+      const hs = score?.fullTime?.home ?? ((isLive||isPaused)?score?.halfTime?.home:null);
+      const as_ = score?.fullTime?.away ?? ((isLive||isPaused)?score?.halfTime?.away:null);
+      const showScore = hs!==null && hs!==undefined;
 
-      let badgeHtml = '';
-      if(isLive) badgeHtml = `<span class="status-badge badge-live">● ${m.minute||''}' ao vivo</span>`;
-      else if(isPaused) badgeHtml = `<span class="status-badge badge-halftime">Intervalo</span>`;
-      else if(isFinished) badgeHtml = `<span class="status-badge badge-finished">Encerrado</span>`;
-      else if(isScheduled) badgeHtml = `<span class="status-badge badge-scheduled">${formatHour(m.utcDate)}</span>`;
+      let statusBadge = '';
+      if(isLive) statusBadge = `<span class="game-status-badge sb-live">● ${m.minute||''}' AO VIVO</span>`;
+      else if(isPaused) statusBadge = `<span class="game-status-badge sb-halftime">INTERVALO</span>`;
+      else if(isFinished) statusBadge = `<span class="game-status-badge sb-finished">ENCERRADO</span>`;
+      else if(isScheduled) statusBadge = `<span class="game-status-badge sb-scheduled">${formatDateTime(m.utcDate)}</span>`;
 
       let scoreHtml = '';
       if(showScore){
-        scoreHtml = `<div class="score">${hs}<span class="score-sep">·</span>${as_}</div>`;
-        if(isLive) scoreHtml += `<div class="score-time" style="color:var(--red);font-size:11px">${m.minute||0}'</div>`;
+        scoreHtml = `<div class="score-nums">${hs}<span class="score-sep">×</span>${as_}</div>
+          ${isLive?`<div class="score-time">${m.minute||0}'</div>`:''}`;
       } else {
-        scoreHtml = `<div class="score-scheduled">${formatHour(m.utcDate)}</div>`;
+        scoreHtml = `<div class="score-vs">vs</div>
+          <div class="score-hour">${formatHour(m.utcDate)}</div>`;
       }
 
-      html += `
-      <div class="game ${isLive||isPaused?'live':''} ${isFinished?'finished':''} ${brasil?'brasil':''}">
-        <div class="game-header">
-          <span class="game-group">${m.group||m.stage||''}</span>
-          ${badgeHtml}
+      const stageLabel = STAGE_LABELS[m.stage] || m.stage || '';
+      const groupLabel = m.group ? m.group.replace('GROUP_','Grupo ') : '';
+      const stageFull = [groupLabel, stageLabel].filter(Boolean).join(' · ');
+
+      html += `<div class="game ${isLive||isPaused?'live-game':''} ${brasil?'brasil-game':''}">
+        ${brasil?`<div class="brasil-header"><span class="brasil-header-text">🇧🇷 Jogo do Brasil</span></div>`:''}
+        <div class="game-top">
+          <span class="game-stage-badge">${stageFull}</span>
+          ${statusBadge}
         </div>
         <div class="game-body">
-          <div class="team">
-            <div class="team-flag">${getFlag(home.tla)}</div>
-            <div class="team-name">${home.shortName||home.name}</div>
-          </div>
+          ${teamHtml(home)}
           <div class="score-center">${scoreHtml}</div>
-          <div class="team">
-            <div class="team-flag">${getFlag(away.tla)}</div>
-            <div class="team-name">${away.shortName||away.name}</div>
-          </div>
+          ${teamHtml(away)}
         </div>
-        ${m.venue ? `<div class="game-footer"><span class="game-venue">📍 ${m.venue}</span><span class="game-stage"></span></div>` : ''}
+        ${m.venue?`<div class="game-bottom"><span class="game-venue">📍 ${m.venue}</span></div>`:''}
       </div>`;
     });
   }
@@ -328,22 +319,17 @@ function filterGames(filter, btn){
   currentFilter = filter;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-
   const today = new Date();
   let filtered = allMatches;
-
-  if(filter==='live') filtered = allMatches.filter(m => ['IN_PLAY','PAUSED'].includes(m.status));
-  else if(filter==='today') filtered = allMatches.filter(m => new Date(m.utcDate).toDateString()===today.toDateString());
-  else if(filter==='upcoming') filtered = allMatches.filter(m => ['TIMED','SCHEDULED'].includes(m.status));
-  else if(filter==='finished') filtered = allMatches.filter(m => m.status==='FINISHED');
-  else if(filter==='brasil') filtered = allMatches.filter(m => isBrasil(m));
-
+  if(filter==='live') filtered = allMatches.filter(m=>['IN_PLAY','PAUSED'].includes(m.status));
+  else if(filter==='today') filtered = allMatches.filter(m=>new Date(m.utcDate).toDateString()===today.toDateString());
+  else if(filter==='upcoming') filtered = allMatches.filter(m=>['TIMED','SCHEDULED'].includes(m.status));
+  else if(filter==='finished') filtered = allMatches.filter(m=>m.status==='FINISHED');
+  else if(filter==='brasil') filtered = allMatches.filter(m=>isBrasil(m));
   renderMatches(filtered);
 }
 
 function updateStats(matches){
-  const bar = document.getElementById('statsBar');
-  bar.style.display = 'flex';
   document.getElementById('statTotal').textContent = matches.length;
   document.getElementById('statFinished').textContent = matches.filter(m=>m.status==='FINISHED').length;
   document.getElementById('statUpcoming').textContent = matches.filter(m=>['TIMED','SCHEDULED'].includes(m.status)).length;
@@ -357,21 +343,15 @@ async function loadMatches(){
     const res = await fetch(WC_URL);
     if(!res.ok) throw new Error(res.status);
     const data = await res.json();
-    allMatches = (data.matches||[]).sort((a,b) => new Date(a.utcDate)-new Date(b.utcDate));
-
-    const hasLive = allMatches.some(m => ['IN_PLAY','PAUSED'].includes(m.status));
-    document.getElementById('livePill').style.display = hasLive ? 'inline-flex' : 'none';
-
+    allMatches = (data.matches||[]).sort((a,b)=>new Date(a.utcDate)-new Date(b.utcDate));
+    const hasLive = allMatches.some(m=>['IN_PLAY','PAUSED'].includes(m.status));
+    document.getElementById('livePill').style.display = hasLive?'inline-flex':'none';
     updateStats(allMatches);
     filterGames(currentFilter, document.querySelector('.filter-btn.active'));
-
     document.getElementById('lastUpdated').textContent =
       `Atualizado às ${new Date().toLocaleTimeString('pt-BR',{timeZone:'America/Sao_Paulo',hour:'2-digit',minute:'2-digit'})}`;
-
   } catch(e){
-    container.innerHTML = `<div class="error">
-      Não foi possível carregar os jogos. Verifique sua conexão ou tente novamente em instantes.
-    </div>`;
+    container.innerHTML = `<div class="error-box">Não foi possível carregar os jogos. Tente novamente em instantes.</div>`;
   }
 }
 
