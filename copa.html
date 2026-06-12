@@ -210,8 +210,7 @@ footer{border-top:0.5px solid var(--gray-200);padding:20px 24px;display:flex;ali
 </footer>
 
 <script>
-const API_KEY = 'd56cc2afcfb5442dac6518b47d7489ce';
-const WC_ID = 2000;
+const WC_URL = 'https://fluxioapp-production.up.railway.app/api/v1/public/copa/matches';
 
 const FLAGS = {
   'BRA':'🇧🇷','ARG':'🇦🇷','FRA':'🇫🇷','ESP':'🇪🇸','ENG':'🏴󠁧󠁢󠁥󠁮󠁧󠁿','GER':'🇩🇪',
@@ -355,10 +354,7 @@ function updateStats(matches){
 async function loadMatches(){
   const container = document.getElementById('gamesContainer');
   try {
-    const res = await fetch(
-      `https://api.football-data.org/v4/competitions/${WC_ID}/matches`,
-      { headers: {'X-Auth-Token': API_KEY} }
-    );
+    const res = await fetch(WC_URL);
     if(!res.ok) throw new Error(res.status);
     const data = await res.json();
     allMatches = (data.matches||[]).sort((a,b) => new Date(a.utcDate)-new Date(b.utcDate));
