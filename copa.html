@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Copa do Mundo 2026 — Placares</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#111111;
+  --white:#ffffff;
+  --gray-50:#fafafa;
+  --gray-100:#f5f5f4;
+  --gray-200:#e5e5e5;
+  --gray-400:#a3a3a3;
+  --gray-500:#737373;
+  --green:#16a34a;
+  --red:#dc2626;
+  --amber:#d97706;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--black);min-height:100vh}
+
+/* NAV */
+nav{padding:16px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid var(--gray-200);position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);z-index:100}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--black)}
+.nav-logo svg{width:28px;height:28px}
+.nav-logo span{font-size:16px;font-weight:500;letter-spacing:-0.3px}
+.nav-tag{font-size:11px;color:var(--gray-500);letter-spacing:1px}
+
+/* HEADER */
+.page-header{padding:40px 24px 24px;max-width:680px;margin:0 auto}
+.page-header h1{font-size:clamp(22px,4vw,32px);font-weight:500;letter-spacing:-0.5px;margin-bottom:6px}
+.page-header p{font-size:14px;color:var(--gray-500)}
+.live-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--red);margin-top:10px}
+.live-dot{width:6px;height:6px;background:var(--red);border-radius:50%;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* FILTROS */
+.filters{padding:0 24px 20px;max-width:680px;margin:0 auto;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.filter-btn{padding:6px 16px;border-radius:100px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:all 0.15s;border:0.5px solid var(--gray-200);background:var(--white);color:var(--gray-500)}
+.filter-btn.active{background:var(--black);color:var(--white);border-color:var(--black)}
+
+/* JOGOS */
+.games{padding:0 24px 48px;max-width:680px;margin:0 auto}
+.day-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-400);margin:24px 0 12px;padding-bottom:8px;border-bottom:0.5px solid var(--gray-200)}
+
+.game{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:16px 0;border-bottom:0.5px solid var(--gray-100)}
+.game:last-child{border-bottom:none}
+
+.team{display:flex;align-items:center;gap:10px}
+.team.away{flex-direction:row-reverse}
+.team-flag{font-size:26px;line-height:1;flex-shrink:0}
+.team-info{}
+.team-name{font-size:14px;font-weight:500;line-height:1.2}
+.team-name-short{font-size:12px;color:var(--gray-500)}
+.team.away .team-info{text-align:right}
+
+.game-center{text-align:center;flex-shrink:0}
+.score{font-size:22px;font-weight:600;letter-spacing:-1px;font-variant-numeric:tabular-nums;line-height:1}
+.score-sep{color:var(--gray-400);margin:0 2px;font-weight:300}
+.game-time{font-size:11px;color:var(--gray-400);margin-top:3px}
+.status-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:100px;margin-top:4px;display:inline-block}
+.status-live{background:#fef2f2;color:var(--red)}
+.status-halftime{background:#fffbeb;color:var(--amber)}
+.status-finished{color:var(--gray-400);font-size:11px}
+.status-scheduled{color:var(--gray-400);font-size:11px}
+
+/* LOADING / ERROR */
+.loading{padding:48px 0;text-align:center;color:var(--gray-400)}
+.spinner{width:24px;height:24px;border:2px solid var(--gray-200);border-top-color:var(--black);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error{padding:20px;background:var(--gray-100);border-radius:10px;font-size:13px;color:var(--gray-500);text-align:center}
+.error a{color:var(--black)}
+
+/* FOOTER DISCRETO */
+.footer-strip{border-top:0.5px solid var(--gray-200);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-fluxio{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--gray-400);font-size:12px;transition:color 0.2s}
+.footer-fluxio:hover{color:var(--black)}
+.footer-fluxio svg{width:18px;height:18px;opacity:0.5}
+.footer-note{font-size:11px;color:var(--gray-400)}
+
+/* LAST UPDATED */
+.last-updated{font-size:11px;color:var(--gray-400);text-align:center;padding:12px 0 0}
+
+@media(max-width:480px){
+  nav{padding:12px 16px}
+  .page-header{padding:28px 16px 16px}
+  .filters{padding:0 16px 16px}
+  .games{padding:0 16px 40px}
+  .team-flag{font-size:22px}
+  .score{font-size:20px}
+  .team-name{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://fluxioapp.com.br" class="nav-logo">
+    <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="72" height="72" rx="18" fill="#111111"/>
+      <path d="M16 52 C16 52 24 36 36 36 C48 36 48 20 56 20" stroke="white" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="56" cy="20" r="5" fill="white"/>
+      <circle cx="16" cy="52" r="5" fill="white"/>
+    </svg>
+    <span>fluxio</span>
+  </a>
+  <span class="nav-tag">Copa 2026</span>
+</nav>
+
+<div class="page-header">
+  <h1>Copa do Mundo 2026</h1>
+  <p>Placares e resultados · EUA, México e Canadá</p>
+  <div class="live-pill" id="livePill" style="display:none">
+    <span class="live-dot"></span> Jogos ao vivo agora
+  </div>
+</div>
+
+<div class="filters">
+  <button class="filter-btn active" onclick="filterGames('all',this)">Todos</button>
+  <button class="filter-btn" onclick="filterGames('live',this)">Ao vivo</button>
+  <button class="filter-btn" onclick="filterGames('today',this)">Hoje</button>
+  <button class="filter-btn" onclick="filterGames('upcoming',this)">Próximos</button>
+  <button class="filter-btn" onclick="filterGames('finished',this)">Encerrados</button>
+</div>
+
+<div class="games" id="gamesContainer">
+  <div class="loading">
+    <div class="spinner"></div>
+    <p>Carregando...</p>
+  </div>
+</div>
+<div class="last-updated" id="lastUpdated"></div>
+
+<div class="footer-strip">
+  <a href="https://fluxioapp.com.br" class="footer-fluxio">
+    <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="72" height="72" rx="18" fill="#111111"/>
+      <path d="M16 52 C16 52 24 36 36 36 C48 36 48 20 56 20" stroke="white" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="56" cy="20" r="5" fill="white"/>
+      <circle cx="16" cy="52" r="5" fill="white"/>
+    </svg>
+    Gerencie seu negócio com o Fluxio
+  </a>
+  <span class="footer-note">Dados: football-data.org</span>
+</div>
+
+<script>
+const API_KEY = 'd56cc2afcfb5442dac6518b47d7489ce';
+const WC_ID = 2000;
+
+const FLAGS = {
+  'BRA':'🇧🇷','ARG':'🇦🇷','FRA':'🇫🇷','ESP':'🇪🇸','ENG':'🏴󠁧󠁢󠁥󠁮󠁧󠁿','GER':'🇩🇪',
+  'POR':'🇵🇹','NED':'🇳🇱','BEL':'🇧🇪','ITA':'🇮🇹','URU':'🇺🇾','MEX':'🇲🇽',
+  'USA':'🇺🇸','CAN':'🇨🇦','JPN':'🇯🇵','KOR':'🇰🇷','MAR':'🇲🇦','SEN':'🇸🇳',
+  'GHA':'🇬🇭','EGY':'🇪🇬','TUN':'🇹🇳','CIV':'🇨🇮','AUS':'🇦🇺','NZL':'🇳🇿',
+  'CRO':'🇭🇷','SRB':'🇷🇸','POL':'🇵🇱','SUI':'🇨🇭','DEN':'🇩🇰','SCO':'🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+  'IRN':'🇮🇷','SAU':'🇸🇦','QAT':'🇶🇦','ECU':'🇪🇨','COL':'🇨🇴','PAR':'🇵🇾',
+  'HAI':'🇭🇹','UZB':'🇺🇿','CPV':'🇨🇻','ALG':'🇩🇿','AUT':'🇦🇹','JOR':'🇯🇴',
+  'NOR':'🇳🇴','UKR':'🇺🇦','SWE':'🇸🇪','ZAF':'🇿🇦','CUR':'🇨🇼','default':'🏳️'
+};
+
+let allMatches = [];
+let currentFilter = 'all';
+
+function getFlag(tla){ return FLAGS[tla] || FLAGS['default']; }
+
+function formatDateTime(dateStr){
+  const d = new Date(dateStr);
+  return d.toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+}
+
+function formatDay(dateStr){
+  const d = new Date(dateStr);
+  const today = new Date();
+  const tomorrow = new Date(); tomorrow.setDate(today.getDate()+1);
+  const yesterday = new Date(); yesterday.setDate(today.getDate()-1);
+  if(d.toDateString()===today.toDateString()) return 'Hoje';
+  if(d.toDateString()===tomorrow.toDateString()) return 'Amanhã';
+  if(d.toDateString()===yesterday.toDateString()) return 'Ontem';
+  return d.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long'});
+}
+
+function renderMatches(matches){
+  const container = document.getElementById('gamesContainer');
+  if(!matches.length){
+    container.innerHTML = '<div class="error">Nenhum jogo neste filtro.</div>';
+    return;
+  }
+
+  const byDay = {};
+  matches.forEach(m => {
+    const day = formatDay(m.utcDate);
+    if(!byDay[day]) byDay[day] = [];
+    byDay[day].push(m);
+  });
+
+  let html = '';
+  for(const [day, games] of Object.entries(byDay)){
+    html += `<div class="day-label">${day}</div>`;
+    games.forEach(m => {
+      const home = m.homeTeam;
+      const away = m.awayTeam;
+      const score = m.score;
+      const isLive = m.status==='IN_PLAY';
+      const isPaused = m.status==='PAUSED';
+      const isFinished = m.status==='FINISHED';
+      const isScheduled = ['TIMED','SCHEDULED'].includes(m.status);
+      const hs = score?.fullTime?.home ?? (isLive||isPaused ? score?.halfTime?.home : null);
+      const as = score?.fullTime?.away ?? (isLive||isPaused ? score?.halfTime?.away : null);
+      const showScore = hs !== null && hs !== undefined;
+
+      let statusHtml = '';
+      if(isLive) statusHtml = `<div class="status-badge status-live">● ${m.minute||''}' ao vivo</div>`;
+      else if(isPaused) statusHtml = `<div class="status-badge status-halftime">Intervalo</div>`;
+      else if(isFinished) statusHtml = `<div class="status-finished">Encerrado</div>`;
+      else if(isScheduled) statusHtml = `<div class="status-scheduled">${formatDateTime(m.utcDate)}</div>`;
+
+      html += `
+      <div class="game">
+        <div class="team">
+          <div class="team-flag">${getFlag(home.tla)}</div>
+          <div class="team-info">
+            <div class="team-name">${home.shortName||home.name}</div>
+          </div>
+        </div>
+        <div class="game-center">
+          ${showScore
+            ? `<div class="score">${hs}<span class="score-sep">·</span>${as}</div>`
+            : `<div class="game-time">${formatDateTime(m.utcDate)}</div>`}
+          ${statusHtml}
+        </div>
+        <div class="team away">
+          <div class="team-flag">${getFlag(away.tla)}</div>
+          <div class="team-info">
+            <div class="team-name">${away.shortName||away.name}</div>
+          </div>
+        </div>
+      </div>`;
+    });
+  }
+  container.innerHTML = html;
+}
+
+function filterGames(filter, btn){
+  currentFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const today = new Date();
+  let filtered = allMatches;
+
+  if(filter==='live') filtered = allMatches.filter(m => ['IN_PLAY','PAUSED'].includes(m.status));
+  else if(filter==='today') filtered = allMatches.filter(m => new Date(m.utcDate).toDateString()===today.toDateString());
+  else if(filter==='upcoming') filtered = allMatches.filter(m => ['TIMED','SCHEDULED'].includes(m.status));
+  else if(filter==='finished') filtered = allMatches.filter(m => m.status==='FINISHED');
+
+  renderMatches(filtered);
+}
+
+async function loadMatches(){
+  const container = document.getElementById('gamesContainer');
+  try {
+    const res = await fetch(
+      `https://api.football-data.org/v4/competitions/${WC_ID}/matches`,
+      { headers: {'X-Auth-Token': API_KEY} }
+    );
+    if(!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    allMatches = (data.matches||[]).sort((a,b) => new Date(a.utcDate)-new Date(b.utcDate));
+
+    const hasLive = allMatches.some(m => ['IN_PLAY','PAUSED'].includes(m.status));
+    document.getElementById('livePill').style.display = hasLive ? 'inline-flex' : 'none';
+
+    filterGames(currentFilter, document.querySelector('.filter-btn.active'));
+
+    document.getElementById('lastUpdated').textContent =
+      `Atualizado às ${new Date().toLocaleTimeString('pt-BR',{timeZone:'America/Sao_Paulo',hour:'2-digit',minute:'2-digit'})}`;
+
+  } catch(e){
+    container.innerHTML = `<div class="error">
+      Para ativar os placares ao vivo, substitua <strong>SUA_CHAVE_AQUI</strong> pela sua chave gratuita de <a href="https://www.football-data.org/client" target="_blank">football-data.org</a>.
+    </div>`;
+  }
+}
+
+loadMatches();
+setInterval(loadMatches, 60000);
+</script>
+</body>
+</html>
