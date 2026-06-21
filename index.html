@@ -289,6 +289,8 @@
 
     .product-icon svg { width: 24px; height: 24px; }
 
+    .product-card > svg { display: block; margin-bottom: 24px; }
+
     .product-tag {
       font-size: 10px;
       font-weight: 600;
@@ -593,14 +595,14 @@
 
     <!-- FluxioFood -->
     <div class="product-card">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round">
-          <path d="M3 6h18M3 12h18M3 18h18"/>
-          <circle cx="7" cy="6" r="1.5" fill="white" stroke="none"/>
-          <circle cx="7" cy="12" r="1.5" fill="white" stroke="none"/>
-          <circle cx="7" cy="18" r="1.5" fill="white" stroke="none"/>
-        </svg>
-      </div>
+      <svg width="48" height="48" viewBox="0 0 72 72" fill="none">
+        <rect width="72" height="72" rx="18" fill="#111111"/>
+        <circle cx="36" cy="36" r="20" fill="none" stroke="white" stroke-width="2.5" opacity="0.9"/>
+        <line x1="28" y1="20" x2="28" y2="52" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+        <path d="M24 20 L24 30 C24 33 28 33 28 30 L28 20" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+        <line x1="44" y1="20" x2="44" y2="52" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+        <path d="M41 20 L41 34 C41 37 47 37 47 34 L47 20" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+      </svg>
       <div class="badge-soon">Em breve</div>
       <p class="product-tag">Alimentação</p>
       <h3 class="product-name">FluxioFood</h3>
@@ -614,13 +616,11 @@
 
     <!-- FluxioMestre -->
     <div class="product-card">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round">
-          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3-3a1 1 0 0 0 0-1.4l-1.6-1.6a1 1 0 0 0-1.4 0z"/>
-          <path d="M5 20l6.5-6.5M19 4l-3 3"/>
-          <path d="M3 20h4l9-9-4-4-9 9z"/>
-        </svg>
-      </div>
+      <svg width="48" height="48" viewBox="0 0 72 72" fill="none">
+        <rect width="72" height="72" rx="18" fill="#111111"/>
+        <path d="M22 36 C22 29 27 24 34 24 C37 24 40 25 42 27 L48 21 L51 24 L45 30 C47 32 48 34 48 36 C48 43 43 48 36 48 C29 48 22 43 22 36Z" fill="white" opacity="0.9"/>
+        <circle cx="36" cy="36" r="5" fill="#111111"/>
+      </svg>
       <div class="badge-live">Em produção</div>
       <p class="product-tag">Serviços</p>
       <h3 class="product-name">FluxioMestre</h3>
@@ -635,14 +635,18 @@
 
     <!-- FluxioGames -->
     <div class="product-card">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round">
-          <rect x="2" y="7" width="20" height="12" rx="4"/>
-          <path d="M7 13h4M9 11v4"/>
-          <circle cx="15" cy="12" r="1" fill="white" stroke="none"/>
-          <circle cx="17" cy="14" r="1" fill="white" stroke="none"/>
-        </svg>
-      </div>
+      <svg width="48" height="48" viewBox="0 0 72 72" fill="none">
+        <rect width="72" height="72" rx="18" fill="#111111"/>
+        <rect x="12" y="24" width="48" height="28" rx="10" fill="white" opacity="0.9"/>
+        <rect x="20" y="32" width="6" height="12" rx="2" fill="#111111"/>
+        <rect x="17" y="35" width="12" height="6" rx="2" fill="#111111"/>
+        <circle cx="48" cy="34" r="3" fill="#111111"/>
+        <circle cx="54" cy="38" r="3" fill="#111111"/>
+        <circle cx="48" cy="42" r="3" fill="#111111"/>
+        <circle cx="42" cy="38" r="3" fill="#111111"/>
+        <path d="M12 44 C12 52 18 56 24 52 L24 48 L12 44Z" fill="white" opacity="0.9"/>
+        <path d="M60 44 C60 52 54 56 48 52 L48 48 L60 44Z" fill="white" opacity="0.9"/>
+      </svg>
       <div class="badge-soon">Em breve</div>
       <p class="product-tag">Varejo</p>
       <h3 class="product-name">FluxioGames</h3>
@@ -656,14 +660,14 @@
 
     <!-- FluxioContratos -->
     <div class="product-card">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="8" y1="13" x2="16" y2="13"/>
-          <path d="M8 17c1.5-1 3 1 4.5 0S15.5 16 17 17"/>
-        </svg>
-      </div>
+      <svg width="48" height="48" viewBox="0 0 72 72" fill="none">
+        <rect width="72" height="72" rx="18" fill="#111111"/>
+        <path d="M20 14 H44 L52 22 V58 H20 Z" fill="white" opacity="0.9"/>
+        <line x1="28" y1="30" x2="44" y2="30" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="28" y1="37" x2="44" y2="37" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="28" y1="44" x2="38" y2="44" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M44 14 V22 H52" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round"/>
+      </svg>
       <div class="badge-live">Em produção</div>
       <p class="product-tag">Contratos</p>
       <h3 class="product-name">FluxioContratos</h3>
@@ -677,11 +681,14 @@
 
     <!-- FluxioAtende -->
     <div class="product-card">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-        </svg>
-      </div>
+      <svg width="48" height="48" viewBox="0 0 72 72" fill="none">
+        <rect width="72" height="72" rx="18" fill="#111111"/>
+        <rect x="14" y="16" width="44" height="32" rx="8" fill="white" opacity="0.9"/>
+        <path d="M20 48 L16 58 L28 50" fill="white" opacity="0.9"/>
+        <line x1="20" y1="26" x2="50" y2="26" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="20" y1="33" x2="44" y2="33" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="20" y1="40" x2="38" y2="40" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
       <div class="badge-dev">Em desenvolvimento</div>
       <p class="product-tag">Atendimento</p>
       <h3 class="product-name">FluxioAtende</h3>
