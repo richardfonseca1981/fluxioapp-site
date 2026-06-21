@@ -370,6 +370,40 @@
       margin-bottom: 16px;
     }
 
+    .badge-dev {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #7a4f00;
+      background: #fff8ed;
+      border: 1px solid #f0d090;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .badge-dev::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: #c07800;
+      border-radius: 50%;
+    }
+
+    .product-link {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--grafite-mid);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+
+    .product-link:hover { color: var(--black); }
+
     /* ── POR QUE FLUXIOAPP ── */
     .why-section {
       background: var(--black);
@@ -587,7 +621,7 @@
           <path d="M3 20h4l9-9-4-4-9 9z"/>
         </svg>
       </div>
-      <div class="badge-soon">Em breve</div>
+      <div class="badge-live">Em produção</div>
       <p class="product-tag">Serviços</p>
       <h3 class="product-name">FluxioMestre</h3>
       <p class="product-desc">Orçamentos por voz, precificação inteligente e histórico de serviços para prestadores autônomos que trabalham no campo.</p>
@@ -596,6 +630,7 @@
         <span class="niche-tag">Eletricistas</span>
         <span class="niche-tag">Pintores</span>
       </div>
+      <a href="https://mestre.fluxioapp.com.br" class="product-link" target="_blank">Acessar →</a>
     </div>
 
     <!-- FluxioGames -->
@@ -637,6 +672,24 @@
         <span class="niche-tag">Empresas</span>
         <span class="niche-tag">Freelancers</span>
         <span class="niche-tag">Prestadores</span>
+      </div>
+    </div>
+
+    <!-- FluxioAtende -->
+    <div class="product-card">
+      <div class="product-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </div>
+      <div class="badge-dev">Em desenvolvimento</div>
+      <p class="product-tag">Atendimento</p>
+      <h3 class="product-name">FluxioAtende</h3>
+      <p class="product-desc">Bot WhatsApp com IA para automatizar o atendimento e agendamento do seu consultório, com tom humanizado e protocolo de segurança para situações sensíveis.</p>
+      <div class="product-niches">
+        <span class="niche-tag">Consultórios</span>
+        <span class="niche-tag">Clínicas</span>
+        <span class="niche-tag">Profissionais de Saúde</span>
       </div>
     </div>
 
